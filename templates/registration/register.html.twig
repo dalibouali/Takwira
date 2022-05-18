@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+{% form_theme registrationForm 'bootstrap_5_layout.html.twig' %}
+{% block body %}
+    <!-- breadcrumb-section -->
+    <div class="breadcrumb-section breadcrumb-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2 text-center">
+                    <div class="breadcrumb-text">
+                        <p>Marahbe</p>
+                        <h1>Inscription</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end breadcrumb section -->
+    {% for flashError in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+    {% endfor %}
+<div class="contact-from-section mt-150 mb-150">
+    <div class="container">
+
+    {{ form_start(registrationForm) }}
+        {{ form_row(registrationForm.mail) }}
+    {{ form_row(registrationForm.pseudo) }}
+        {{ form_row(registrationForm.plainPassword, {
+            label: 'Password'
+        }) }}
+    {{ form_row(registrationForm.nom) }}
+    {{ form_row(registrationForm.prenom) }}
+        {{ form_row(registrationForm.phone) }}
+        {{ form_row(registrationForm.roles) }}
+        {{ form_row(registrationForm.imagefile) }}
+
+
+
+        <p><input type="submit" value="S'inscrire"></p>
+    {{ form_end(registrationForm) }}
+    </div>
+</div>
+{% endblock %}

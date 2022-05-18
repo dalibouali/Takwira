@@ -1,0 +1,31 @@
+
+{% extends 'proprietaire/index.html.twig' %}
+
+{% block titel %}Mon profile {% endblock %}
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+{% block body %}
+
+    <div class="container-fluid">
+
+        <!-- Area Chart -->
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Mon profil</h6>
+        </div>
+        <div class="card shadow mb-4">
+            <div class="card-body">
+                {{form(form) }}
+
+
+
+                <a href="javascript:$('form').submit()" class="btn btn-success btn-icon-split">
+                                        <span class="icon text-white-50">
+                                            <i class="fas fa-check"></i>
+                                        </span>
+                    <span class="text">Modifier</span>
+                </a>
+
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}

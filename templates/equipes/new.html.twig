@@ -1,0 +1,47 @@
+{% extends 'user/index.html.twig' %}
+
+
+
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+{% block body %}
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <script >
+        $(function(){
+            $('.js-example-basic-multiple').select2();
+
+        });
+
+    </script>
+    <div class="container-fluid">
+    <div class="card-header py-4">
+        <h6 class="m-1 font-weight-bold text-primary">Ajouter une equipe</h6>
+    </div>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+
+    <div class="card-body">
+
+        {{ form_start(form) }}
+        {{ form_row(form.pseudo) }}
+        {{ form_row(form.membres) }}
+
+
+        <div class="col m-1">
+            <a href="javascript:$('form').submit()" class="btn btn-secondary btn-icon-split">
+                                        <span class="icon text-white-50">
+                                            <i class="fas fa-arrow-right"></i>
+                                        </span>
+                <span class="text">Ajouter</span>
+            </a>
+
+
+        </div>
+        {{ form_end(form) }}
+
+    </div>
+    </div>
+    </div>
+{% endblock %}

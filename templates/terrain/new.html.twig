@@ -1,0 +1,37 @@
+{% extends 'proprietaire/index.html.twig' %}
+
+{% block title %}New Terrain{% endblock %}
+
+{% block body %}
+    {% form_theme form 'bootstrap_5_layout.html.twig' %}
+    <div class="col-xl-12 col-lg-12">
+    <div class="card shadow mb-4">
+    <!-- Card Header - Dropdown -->
+    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <h6 class="m-0 font-weight-bold text-primary">Ajouter Terrain</h6>
+
+    </div>
+    <!-- Card Body -->
+    <div class="card-body">
+
+
+
+    {{ form(form) }}
+    <div class="col m-1">
+        <a href="javascript:$('form').submit()" class="btn btn-secondary btn-icon-split">
+                                        <span class="icon text-white-50">
+                                            <i class="fas fa-arrow-right"></i>
+                                        </span>
+            <span class="text">Ajouter</span>
+        </a>
+
+
+    </div>
+
+    <a href="{{ path('proprietaireapp') }}">back to list</a>
+
+    </div>
+    </div>
+    </div>
+
+{% endblock %}

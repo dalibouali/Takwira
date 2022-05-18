@@ -1,0 +1,94 @@
+
+
+{% extends 'user/index.html.twig' %}
+
+{% block titel %}Recherche Terrain {% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+
+    <!-- Area Chart -->
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Recherche Terrain</h6>
+    </div>
+        <div class="col-xl-12">
+
+            <div class="card border-bottom-primary ">
+                <div class="card-body">
+                    {{ form_start(form) }}
+                    <div class="row no-gutters align-items-center">
+
+                        <div class="col m-0">
+
+                                {{ form_row(form.ville) }}
+                        </div>
+                        <div class="col m-0">
+
+                        </div>
+
+                        <div class="col m-1">
+                            <a href="javascript:$('form').submit()" class="btn btn-secondary btn-icon-split">
+                                        <span class="icon text-white-50">
+                                            <i class="fas fa-arrow-right"></i>
+                                        </span>
+                                <span class="text">Recherche</span>
+                            </a>
+
+
+                        </div>
+
+                    </div>
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+
+
+
+        </div>
+  <div id="box" class="card shadow mb-4">
+    <div class="card-body">
+    <div class="col-xl-12">
+        {%  for complexe in complexes %}
+        <div class="card border-left-success shadow mh-100 py-0">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col m-1"> <img style="height: 150px;" src="{{ complexe.logo }}" alt=""  ></div>
+
+                    <div class="col mr-2">
+
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ complexe.nom }}</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">Région : {{ complexe.ville }}</div>
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                            {{ complexe.terrains | length  }} Terrains Disponible</div>
+
+                    </div>
+                    <div class="col-auto">
+                        <a href="{{ path('reservation_terrain', {'id': complexe.terrains[0].getId()}) }}" class="btn btn-info btn-circle ">
+                            <i class="fas fa-info-circle"></i>
+                        </a>
+                        <a href="{{ complexe.localisation }}" class="btn btn-primary btn-circle">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    </div>
+        {% do complexes.setTemplate('twitter_bootstrap_v4_pagination.html.twig') %}
+    <div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
+        <ul class="pagination justify-content-center">
+            {{ knp_pagination_render(complexes) }}
+        </ul>
+    </div>
+    </div>
+    </div>
+
+
+
+
+
+
+{% endblock %}

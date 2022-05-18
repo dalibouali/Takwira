@@ -1,0 +1,49 @@
+{%  if "ROLE_PROPRIETAIRE" in App.user.roles  %}
+{% extends 'proprietaire/index.html.twig' %}
+{% else %}
+{% extends 'user/index.html.twig' %}
+{% endif %}
+
+
+{% block title %}Messagerie{% endblock %}
+
+
+{% block body %}
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>message</title>
+    <link rel="stylesheet" href="assetsmessage/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assetsmessage/css/Highlight-Clean.css">
+    <link rel="stylesheet" href="assetsmessage/css/styles.css">
+</head>
+
+<body>
+    <section class="highlight-clean">
+        <div class="container">
+            <div class="intro">
+                <h2 class="text-center">Messagerie</h2>
+                <p class="text-center">Bienvenue dans Votre boite de messagerie privé&nbsp;</p>
+                <p>Recu :{{ app.user.recevied|length }}</p>
+                <p>Envoyer :{{ app.user.sent|length}} </p>
+
+
+            <div class="list-group">
+                <a href="{{ path('send') }}" class="list-group-item list-group-item-action active ">Crer une nouvelle conversation
+                </a>
+            </div>
+
+
+
+         </div>
+    </section>
+
+</body>
+
+
+
+
+{% endblock %}
